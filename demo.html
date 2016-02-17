@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title></title>
+    <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="mdtabs.js"></script>
+    <script type="text/javascript">
+    $(function(){
+        $("#tabs1").mdtabs({});
+
+        $("#tabs2").mdtabs({duration: 800});
+
+        $("#tabs3").mdtabs();
+
+        $("#tabs4").mdtabs({
+            onClick: function(){
+                return !$(this).hasClass("disabled");
+            }
+        });
+
+        $("#tabs5").mdtabs({
+            duration: 800,
+            onIndicaterMoved: function(){
+                $("#tabs5-log").text($(this).text() + " selected")
+            }
+        });
+
+        $("#tabs6").mdtabs({
+            color: "rgba(255,0,0,0.8)",
+            height: 7
+        });
+    })
+    </script>
+    <style>
+        .tabs{
+            background-color: #79F;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .tabs a{
+            display: inline-block;
+            padding: 10px;
+            color: #FFF;
+            text-decoration: none;
+        }
+
+        .tabs a.disabled{
+            color: rgba(255,255,255,0.5);
+            text-decoration: line-through;
+        }
+
+        pre {
+            font-family: "courier new", courier, monospace;
+            font-size: 11px;
+            border: solid 1px #CCC;
+            padding: 10px;
+        }
+
+        .example{
+            padding: 20px;
+            margin-bottom: 10px;
+            border-bottom: solid 2px #CCC;
+        }
+
+        .example p{
+            margin: 0 0 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="example">
+        <p>
+            different tab size
+        </p>
+        <div id="tabs1" class="tabs">
+            <a href="#">Tab1</a>
+            <a href="#">Tab2</a>
+            <a href="#">Tab3 is very long</a>
+            <a href="#">Tab4</a>
+        </div>
+        <pre>$("#tabs1").mdtabs({});</pre>
+    </div>
+
+    <div class="example">
+        <p>
+            animate duration
+        </p>
+        <div id="tabs2" class="tabs">
+            <a href="#">Tab1</a>
+            <a href="#">Tab2</a>
+            <a href="#">Tab3</a>
+            <a href="#">Tab4</a>
+        </div>
+        <pre>$("#tabs2").mdtabs({duration: 800});</pre>
+    </div>
+
+    <div class="example">
+        <p>
+            default selected
+        </p>
+        <div id="tabs3" class="tabs">
+            <a href="#">Tab1</a>
+            <a href="#" class="selected">Tab2</a>
+            <a href="#">Tab3</a>
+            <a href="#">Tab4</a>
+        </div>
+        <pre>&lt;a href="#" class="selected"&gt;Tab2&lt;/a&gt;</pre>
+    </div>
+
+    <div class="example">
+        <p>
+            click event (disabled tab)
+        </p>
+        <div id="tabs4" class="tabs">
+            <a href="#">Tab1</a>
+            <a href="#">Tab2</a>
+            <a href="#" class="disabled">Tab3</a>
+            <a href="#">Tab4</a>
+        </div>
+        <pre>&lt;a href="#" class="disabled"&gt;Tab3&lt;/a&gt;
+        
+$("#tabs4").mdtabs({
+    onClick: function(){
+        return !$(this).hasClass("disabled");
+    }
+});</pre>
+    </div>
+
+    <div class="example">
+        <p>
+            indicater moved event
+        </p>
+        <p id="tabs5-log">
+            -
+        </p>
+        <div id="tabs5" class="tabs">
+            <a href="#">Tab1</a>
+            <a href="#">Tab2</a>
+            <a href="#">Tab3</a>
+            <a href="#">Tab4</a>
+        </div>
+        <pre>$("#tabs5").mdtabs({
+    duration: 800,
+    onIndicaterMoved: function(){
+        $("#tabs5-log").text($(this).text() + " selected")
+    }
+});</pre>
+    </div>
+    
+    <div class="example">
+        <p>
+            indicater style
+        </p>
+        <div id="tabs6" class="tabs">
+            <a href="#">Tab1</a>
+            <a href="#">Tab2</a>
+            <a href="#" class="selected">Tab3</a>
+            <a href="#">Tab4</a>
+        </div>
+        <pre>$("#tabs6").mdtabs({
+    color: "rgba(255,0,0,0.8)",
+    height: 7
+});</pre>
+    </div>
+</body>
+</html>
